@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Actions/BattleSearcher.gd" type="Script" id=1]
+
+[node name="BattleSearcher" type="Area2D"]
+script = ExtResource( 1 )
+max_steps = null
+min_steps = null
+enemy_group1 = null
+enemy_group2 = null
+enemy_group3 = null
+enemy_group4 = null
+enemy_group5 = null

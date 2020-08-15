@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Attacker.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/characters/dogtective.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+_name = "Slipper"
+max_hp = 30
+hp = 0
+max_mp = 10
+mp = 0
+attack = 5
+defense = 5
+level = 0
+xp = 10
+sprite_sheet = ExtResource( 2 )

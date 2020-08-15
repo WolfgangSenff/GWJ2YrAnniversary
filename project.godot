@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Attacker",
+"language": "GDScript",
+"path": "res://Characters/Attacker.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Dogtective",
 "language": "GDScript",
-"path": "res://Characters/Dogtective.gd"
+"path": "res://Characters/Players/Dogtective.gd"
+}, {
+"base": "Resource",
+"class": "MonsterGroup",
+"language": "GDScript",
+"path": "res://Characters/Monsters/Groups/MonsterGroup.gd"
 } ]
 _global_script_class_icons={
-"Dogtective": ""
+"Attacker": "",
+"Dogtective": "",
+"MonsterGroup": ""
 }
 
 [application]
@@ -27,6 +39,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Events="*res://Singletons/Events.gd"
+Party="*res://Singletons/Party.gd"
 
 [display]
 
