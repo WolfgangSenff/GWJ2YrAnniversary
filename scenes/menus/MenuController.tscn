@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/menus/MenuController.gd" type="Script" id=1]
+[ext_resource path="res://scenes/menus/Intro.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/menus/MainMenu.tscn" type="PackedScene" id=5]
+
+[node name="MenuController" type="Node2D"]
+script = ExtResource( 1 )
+menu_array = [ NodePath("Intro") ]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="TweenIn" type="Tween" parent="."]
+
+[node name="TweenOut" type="Tween" parent="."]
+
+[node name="Intro" parent="." instance=ExtResource( 2 )]
+margin_left = 1428.68
+margin_top = 1.85693
+margin_right = 1428.68
+margin_bottom = 1.85693
+MainMenu = NodePath("../MainMenu")
+
+[node name="MainMenu" parent="." instance=ExtResource( 5 )]
+margin_left = 11.892
+margin_top = 682.605
+margin_right = 11.892
+margin_bottom = 682.605
