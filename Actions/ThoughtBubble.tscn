@@ -3,4 +3,6 @@
 [ext_resource path="res://Actions/ThoughtBubble.gd" type="Script" id=1]
 
 [node name="ThoughtBubble" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource( 1 )

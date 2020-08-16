@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/ThoughtBubble.gd" type="Script" id=1]
+[ext_resource path="res://assets/OpenDyslexic3-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 2.0
@@ -20,6 +21,10 @@ corner_radius_bottom_left = 5
 corner_detail = 20
 anti_aliasing = false
 
+[sub_resource type="DynamicFont" id=2]
+size = 13
+font_data = ExtResource( 2 )
+
 [node name="ThoughtBubble" type="Node2D"]
 position = Vector2( 0, -26 )
 script = ExtResource( 1 )
@@ -28,7 +33,8 @@ script = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 14.0
 custom_styles/normal = SubResource( 1 )
-custom_colors/font_color = Color( 0.0392157, 0.101961, 0.568627, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0431373, 0.101961, 0.839216, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Label Text"
 __meta__ = {

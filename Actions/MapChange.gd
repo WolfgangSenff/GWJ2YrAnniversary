@@ -10,5 +10,4 @@ func _ready() -> void:
 
 
 func _on_body_entered(body : KinematicBody2D) -> void:
-    if body.is_in_group('Dogtective'):
-        Events.change_map(map_name, coordinates, direction)
+    Events.change_map(map_name, coordinates, direction)

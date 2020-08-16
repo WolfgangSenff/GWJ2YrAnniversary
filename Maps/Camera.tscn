@@ -3,10 +3,12 @@
 [node name="Camera" type="Camera2D"]
 position = Vector2( 291.918, 162.974 )
 current = true
-limit_left = 0
-limit_top = 0
-limit_right = 368
-limit_bottom = 240
+zoom = Vector2( 2, 2 )
+process_mode = 0
+limit_left = -10000
+limit_top = -10000
+limit_right = 10000
+limit_bottom = 10000
 limit_smoothed = true
 smoothing_enabled = true
 smoothing_speed = 6.0

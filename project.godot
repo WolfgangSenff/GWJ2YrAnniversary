@@ -32,7 +32,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="MiamiKnights"
+config/name="DogtectivePI"
 run/main_scene="res://Maps/Outside.tscn"
 config/icon="res://icon.png"
 
