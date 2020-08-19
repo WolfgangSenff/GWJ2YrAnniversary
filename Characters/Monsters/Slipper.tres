@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 _name = "Slipper"
+battle_resource_name = "Slipper"
 max_hp = 30
 hp = 0
 max_mp = 10
@@ -15,3 +16,4 @@ defense = 5
 level = 0
 xp = 10
 sprite_sheet = ExtResource( 2 )
+magic_skills = [  ]

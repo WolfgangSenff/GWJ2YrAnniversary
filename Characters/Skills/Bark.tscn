@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Skills/BaseMagicAttack.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Skills/Bark.gd" type="Script" id=2]
+
+[node name="Bark" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="." index="0"]

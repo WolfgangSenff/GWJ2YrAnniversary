@@ -9,5 +9,5 @@ func _ready() -> void:
     var _e = connect("body_entered", self, "_on_body_entered")
 
 
-func _on_body_entered(body : KinematicBody2D) -> void:
+func _on_body_entered(_body : KinematicBody2D) -> void:
     Events.change_map(map_name, coordinates, direction)

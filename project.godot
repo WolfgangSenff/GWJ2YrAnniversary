@@ -14,20 +14,56 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Attacker.gd"
 }, {
+"base": "Node2D",
+"class": "BaseCharacter",
+"language": "GDScript",
+"path": "res://Characters/BaseCharacter.gd"
+}, {
+"base": "BaseCharacter",
+"class": "BaseMonster",
+"language": "GDScript",
+"path": "res://Characters/Monsters/BaseMonster.gd"
+}, {
+"base": "BaseCharacter",
+"class": "BasePlayer",
+"language": "GDScript",
+"path": "res://Characters/Players/BasePlayer.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Dogtective",
 "language": "GDScript",
-"path": "res://Characters/Players/Dogtective.gd"
+"path": "res://Characters/Dogtective.gd"
+}, {
+"base": "Resource",
+"class": "MagicAttack",
+"language": "GDScript",
+"path": "res://Battle/Attacks/MagicAttack.gd"
+}, {
+"base": "Resource",
+"class": "MagicSkill",
+"language": "GDScript",
+"path": "res://Characters/Skills/MagicSkill.gd"
 }, {
 "base": "Resource",
 "class": "MonsterGroup",
 "language": "GDScript",
 "path": "res://Characters/Monsters/Groups/MonsterGroup.gd"
+}, {
+"base": "Resource",
+"class": "PhysicalAttack",
+"language": "GDScript",
+"path": "res://Battle/Attacks/PhysicalAttack.gd"
 } ]
 _global_script_class_icons={
 "Attacker": "",
+"BaseCharacter": "",
+"BaseMonster": "",
+"BasePlayer": "",
 "Dogtective": "",
-"MonsterGroup": ""
+"MagicAttack": "",
+"MagicSkill": "",
+"MonsterGroup": "",
+"PhysicalAttack": ""
 }
 
 [application]
@@ -43,10 +79,10 @@ Party="*res://Singletons/Party.gd"
 
 [display]
 
-window/size/width=240
-window/size/height=180
+window/size/width=640
+window/size/height=448
 window/size/test_width=960
-window/size/test_height=720
+window/size/test_height=672
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

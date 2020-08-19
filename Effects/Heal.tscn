@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="Heal" type="CPUParticles2D"]
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.1
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 0, -1 )
+spread = 20.0
+gravity = Vector2( 0, -1 )
+initial_velocity = 58.33
+angle = 45.0
+scale_amount = 3.0
+color = Color( 0.223529, 0.305882, 0.65098, 1 )

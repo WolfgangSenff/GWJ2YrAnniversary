@@ -25,12 +25,14 @@ func set_is_walking(value):
 func get_is_walking():
     anim_tree.get("parameters/conditions/is_walking")
 
-export var speed := 100
+export var speed := 130
 
 var direction : Vector2
 
 func _ready() -> void:
     position = Events.player_position
+    direction = Party.direction
+    self.blend_space = Vector2(direction.x, -direction.y)
 
 func _physics_process(_delta):
     direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -39,6 +41,7 @@ func _physics_process(_delta):
         var _e = move_and_slide(direction.normalized() * speed)
         self.blend_space = Vector2(direction.x, -direction.y)
         Party.position = position
+        Party.direction = direction
         self.is_walking = true
         self.is_idle = false
     else:

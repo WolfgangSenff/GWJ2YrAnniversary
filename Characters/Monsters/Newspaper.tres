@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 _name = "Newspaper"
+battle_resource_name = "Newspaper"
 max_hp = 40
 hp = 0
 max_mp = 10
@@ -15,3 +16,4 @@ defense = 6
 level = 0
 xp = 15
 sprite_sheet = ExtResource( 2 )
+magic_skills = [  ]

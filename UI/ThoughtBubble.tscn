@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/ThoughtBubble.gd" type="Script" id=1]
-[ext_resource path="res://assets/OpenDyslexic3-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/OpenDyslexic3-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/FontSmall.tres" type="Theme" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 2.0
@@ -26,12 +27,16 @@ size = 13
 font_data = ExtResource( 2 )
 
 [node name="ThoughtBubble" type="Node2D"]
-position = Vector2( 0, -26 )
+position = Vector2( 0, -45 )
+z_index = 1
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 1.0
+margin_top = -39.0
+margin_right = 88.0
+margin_bottom = -8.0
+theme = ExtResource( 3 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.0431373, 0.101961, 0.839216, 1 )

@@ -1,17 +1,20 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://Characters/Attacker.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/characters/dogtective.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Skills/Chz4All.tres" type="Resource" id=3]
 
 [resource]
 script = ExtResource( 1 )
 _name = "MiceFamily"
-max_hp = 0
-hp = 0
-max_mp = 0
-mp = 0
-attack = 0
-defense = 0
-level = 0
+battle_resource_name = "MiceFamily"
+max_hp = 60
+hp = 58
+max_mp = 25
+mp = 24
+attack = 20
+defense = 10
+level = 3
 xp = 0
 sprite_sheet = ExtResource( 2 )
+magic_skills = [ ExtResource( 3 ) ]

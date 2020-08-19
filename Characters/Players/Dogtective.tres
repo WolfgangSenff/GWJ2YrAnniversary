@@ -1,17 +1,21 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Characters/Attacker.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/characters/dogtective.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Skills/Spikes.tres" type="Resource" id=3]
+[ext_resource path="res://Characters/Skills/Bark.tres" type="Resource" id=4]
 
 [resource]
 script = ExtResource( 1 )
 _name = "Dogtective"
+battle_resource_name = "Dogtective"
 max_hp = 50
-hp = 0
-max_mp = 0
-mp = 0
-attack = 0
-defense = 0
-level = 0
+hp = 30
+max_mp = 15
+mp = 15
+attack = 6
+defense = 5
+level = 2
 xp = 0
 sprite_sheet = ExtResource( 2 )
+magic_skills = [ ExtResource( 4 ), ExtResource( 3 ) ]
