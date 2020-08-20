@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Nostaglia Theme (upbeat).ogg-9fe1b668f7f24321958c4a7374f89895.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Nostaglia Theme (upbeat).ogg"
+dest_files=[ "res://.import/Nostaglia Theme (upbeat).ogg-9fe1b668f7f24321958c4a7374f89895.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

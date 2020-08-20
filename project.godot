@@ -76,6 +76,7 @@ config/icon="res://icon.png"
 
 Events="*res://Singletons/Events.gd"
 Party="*res://Singletons/Party.gd"
+SoundManager="*res://Singletons/Sound Manager.tscn"
 
 [display]
 
