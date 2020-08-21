@@ -4,10 +4,15 @@ class_name Dogtective
 
 const ThoughtBubble = preload("res://UI/ThoughtBubble.tscn")
 
+signal sniffer_updated(sniffables)
+onready var sniff_timer = $SniffTimer
+
 onready var anim_tree = $AnimationTree
 onready var is_idle setget set_is_idle, get_is_idle
 onready var is_walking setget set_is_walking, get_is_walking
 onready var blend_space setget set_blend_space
+
+var _sniffables = []
 
 func set_blend_space(value):
     anim_tree.set("parameters/IdleBlendSpace/blend_position", value)
@@ -52,3 +57,30 @@ func show_thought_bubble(text : String) -> void:
     var thought_bubble = ThoughtBubble.instance()
     thought_bubble.load_text(text)
     add_child(thought_bubble)
+    
+func set_all_sniffables(value):
+    _sniffables = value
+
+class SnifferSorter:
+    var _location
+    func _init(location):
+        _location = location
+        
+    func sort_by_distance(a, b):
+        return a.global_position.distance_squared_to(_location) < b.global_position.distance_squared_to(_location)
+        
+    func sort_by_level(a, b):
+        return a.SniffLevel < b.SniffLevel
+
+func _on_SniffTimer_timeout():
+    if _sniffables and _sniffables.size() > 0:
+        var sorter = SnifferSorter.new(self.global_position)
+        _sniffables.sort_custom(sorter, "sort_by_level")
+        _sniffables.sort_custom(sorter, "sort_by_distance")
+        var reverse_range = range(_sniffables.size())
+        reverse_range.invert()
+        var new_sniffables = []
+        for idx in reverse_range:
+            if _sniffables[idx].global_position.distance_to(global_position) <= SnifferPower.current_sniff_radius:
+                new_sniffables.push_front(_sniffables[idx])
+        emit_signal("sniffer_updated", new_sniffables)

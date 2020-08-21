@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/SniffHint.gd" type="Script" id=1]
+
+[node name="SniffHint" type="MarginContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+script = ExtResource( 1 )
+
+[node name="SniffColor" type="ColorRect" parent="."]
+margin_right = 32.0
+margin_bottom = 32.0
