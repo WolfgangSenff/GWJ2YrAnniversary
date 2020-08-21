@@ -20,5 +20,5 @@ func execute(attack : MagicAttack) -> void:
     cpu_particles.emitting = true
     yield(get_tree().create_timer(1.5), "timeout")
     for target in attack.targets:
-        target.stats.hp -= attack.magic_skill.attack_power
+        target.hp -= attack.magic_skill.attack_power
     queue_free()

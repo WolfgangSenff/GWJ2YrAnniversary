@@ -30,7 +30,7 @@ func load_magic_skills(magic_skills : Array) -> void:
     else:
         _cancel()
 
-func _on_button_selected(magic_skill : MagicSkill):
+func _on_button_selected(magic_skill : BaseMagicAttack):
     emit_signal("magic_attack_selected", magic_skill)
 
 func _cancel() -> void:

@@ -9,15 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Resource",
-"class": "Attacker",
-"language": "GDScript",
-"path": "res://Characters/Attacker.gd"
-}, {
 "base": "Node2D",
 "class": "BaseCharacter",
 "language": "GDScript",
 "path": "res://Characters/BaseCharacter.gd"
+}, {
+"base": "Node2D",
+"class": "BaseMagicAttack",
+"language": "GDScript",
+"path": "res://Characters/Skills/BaseMagicAttack.gd"
 }, {
 "base": "BaseCharacter",
 "class": "BaseMonster",
@@ -40,11 +40,6 @@ _global_script_classes=[ {
 "path": "res://Battle/Attacks/MagicAttack.gd"
 }, {
 "base": "Resource",
-"class": "MagicSkill",
-"language": "GDScript",
-"path": "res://Characters/Skills/MagicSkill.gd"
-}, {
-"base": "Resource",
 "class": "MonsterGroup",
 "language": "GDScript",
 "path": "res://Characters/Monsters/Groups/MonsterGroup.gd"
@@ -55,13 +50,12 @@ _global_script_classes=[ {
 "path": "res://Battle/Attacks/PhysicalAttack.gd"
 } ]
 _global_script_class_icons={
-"Attacker": "",
 "BaseCharacter": "",
+"BaseMagicAttack": "",
 "BaseMonster": "",
 "BasePlayer": "",
 "Dogtective": "",
 "MagicAttack": "",
-"MagicSkill": "",
 "MonsterGroup": "",
 "PhysicalAttack": ""
 }
@@ -76,7 +70,7 @@ config/icon="res://icon.png"
 
 Events="*res://Singletons/Events.gd"
 Party="*res://Singletons/Party.gd"
-SoundManager="*res://Singletons/Sound Manager.tscn"
+SoundManager="*res://Singletons/SoundManager.tscn"
 SnifferPower="*res://Singletons/SnifferPower.tscn"
 
 [display]

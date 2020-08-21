@@ -27,10 +27,13 @@ var party : Array
 var monsters : Array
 var current_member : BasePlayer
 var current_target : BaseCharacter
+var monster_group : MonsterGroup
 var targets : Array
 var attacks : Array
+var in_battle := true
 
 func _ready() -> void:
+    SoundManager.play_music('battle')
     _load_party()
     _load_monsters()
     _select_player_action()
@@ -47,7 +50,7 @@ func _unhandled_key_input(_event):
 
 func _first_living_member() -> BasePlayer:
     for member in party:
-        if member.stats.hp:
+        if member.alive:
             return member
     return null
 
@@ -56,13 +59,11 @@ func _first_living_member() -> BasePlayer:
 func _load_party() -> void:
     var position = Vector2(PLAYER_X, PLAYER_Y)
     for member in Party.members:
-        var battle_member : BasePlayer = load('res://Characters/Players/' + member.battle_resource_name + '.tscn').instance()
-        add_child(battle_member)
-        battle_member.position = position
-        battle_member.stats = member
-        var _e = battle_member.connect("attack_selected", self, "_attack_selected")
-        _e = battle_member.connect("attack_canceled", self, "_attack_canceled")
-        party.append(battle_member)
+        add_child(member)
+        member.position = position
+        var _e = member.connect("attack_selected", self, "_attack_selected")
+        _e = member.connect("attack_canceled", self, "_attack_canceled")
+        party.append(member)
         position.y += Y_SPACING
         # load player stats
         var player_stats = PlayerStats.instance()
@@ -75,22 +76,23 @@ func _load_party() -> void:
 # must first be stored into the `parameters` variable.
 func _load_monsters() -> void:
     var position = Vector2(MONSTER_X, MONSTER_Y)
-    var monster_group : MonsterGroup = Events.parameters
+    monster_group = Events.parameters
     
     # NOTE: just for testing, delete later
     if not monster_group:
         monster_group = load('res://Characters/Monsters/Groups/NewspaperSlipper.tres')
+        Events.parameters = monster_group
     ######################################
     
     if monster_group:
         for monster in monster_group.monsters:
+            monster = monster.instance()
             monster.hp = monster.max_hp
             monster.mp = monster.max_mp
-            var battle_member : BaseMonster = load('res://Characters/Monsters/' + monster.battle_resource_name + '.tscn').instance()
-            add_child(battle_member)
-            battle_member.position = position
-            battle_member.stats = monster
-            monsters.append(battle_member)
+            var _e = monster.connect('character_died', self, "_on_monster_died")
+            add_child(monster)
+            monster.position = position
+            monsters.append(monster)
             position.y += Y_SPACING
 
 func _next_member():
@@ -110,19 +112,34 @@ func _prev_member():
         current_member = party[index]
         _select_player_action()
     else:
-        Events.end_battle()
+        _battle_quit()
 
 func _execute_attacks() -> void:
     _reset_highlighting()
     for attack in attacks:
         if attack.attacker.alive:
             if attack is PhysicalAttack:
-                yield(attack.attacker.physical_attack(attack.target), 'completed')
+                attack.target = _get_living_target(attack.target)
+                if attack.target and attack.target.alive:
+                    yield(attack.attacker.physical_attack(attack.target), 'completed')
             elif attack is MagicAttack:
+                if len(attack.targets) == 1:
+                    attack.targets[0] = _get_living_target(attack.targets[0])
                 yield(attack.attacker.magic_attack(attack), 'completed')
     attacks.clear()
     current_member = _first_living_member()
     _select_player_action()
+
+func _get_living_target(target : BaseCharacter) -> BaseCharacter:
+    if target.alive:
+        return target
+    var attack_targets = monsters
+    if target is BasePlayer:
+        attack_targets = party
+    for target in attack_targets:
+        if target.alive:
+            return target
+    return null
 
 func _select_monster_actions() -> void:
     for monster in monsters:
@@ -130,11 +147,14 @@ func _select_monster_actions() -> void:
         attacks.append(attack)
 
 func _select_player_action(highlight_index := 0) -> void:
-    fight_menu.visible = true
-    current_member.active = false
-    _reset_highlighting()
-    _highlight_current_member()
-    fight_menu_buttons.get_child(highlight_index).grab_focus()
+    if not current_member:
+        _battle_lost()
+    if in_battle:
+        fight_menu.visible = true
+        current_member.active = false
+        _reset_highlighting()
+        _highlight_current_member()
+        fight_menu_buttons.get_child(highlight_index).grab_focus()
 
 func _highlight_current_member() -> void:
     for member in party:
@@ -152,9 +172,9 @@ func _start_physical_attack() -> void:
     current_member.start_physical_attack(monsters)
 
 func _select_magic_attack() -> void:
-    magic_menu.load_magic_skills(current_member.stats.magic_skills)
+    magic_menu.load_magic_skills(current_member.magic_skills)
 
-func _start_magic_attack(magic_skill : MagicSkill) -> void:
+func _start_magic_attack(magic_skill : BaseMagicAttack) -> void:
     fight_menu.visible = false
     magic_menu.visible = false
     current_member.start_magic_attack(magic_skill, party, monsters)
@@ -175,3 +195,36 @@ func _attack_canceled() -> void:
         _select_player_action()
     else:
         _prev_member()
+
+func _on_monster_died() -> void:
+    print('dead')
+    for monster in monsters:
+        if monster.alive:
+            return
+    if in_battle:
+        _battle_won()
+
+func _battle_won() -> void:
+    SoundManager.play_music("victory music")
+    in_battle = false
+    yield(get_tree().create_timer(3), "timeout")
+    print('you win + ' + str(monster_group.xp) + ' xp and ' + str(monster_group.cheeze) + 'g of cheeze!')
+    _detach_party()
+    var _e = get_tree().change_scene("res://Battle/BattleWon.tscn")
+
+func _battle_lost() -> void:
+    if in_battle:
+        in_battle = false
+        yield(get_tree().create_timer(1), "timeout")
+        print('you lose ' + str(Party.cheese / 2) + 'g of cheese!')
+        Party.cheese /= 2
+        _detach_party()
+        Events.end_battle()
+
+func _battle_quit() -> void:
+    _detach_party()
+    Events.end_battle()
+
+func _detach_party() -> void:
+    for member in Party.members:
+        remove_child(member)

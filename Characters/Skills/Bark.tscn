@@ -5,5 +5,8 @@
 
 [node name="Bark" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+_name = "Bark"
+mp_used = 2
+attack_power = 5
 
 [node name="Tween" type="Tween" parent="." index="0"]

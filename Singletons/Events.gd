@@ -4,7 +4,7 @@ const TILE_SIZE = 64
 const DOG_SIZE = 32
 const DOG_COLLISION_Y = 26
 
-var current_map = "Outside"
+var current_map = "OutsideLevel"
 var player_position = Vector2(285, 130)
 # Used to pass a variable from one scene to the next
 var parameters
@@ -42,7 +42,6 @@ func start_battle(monster_group : MonsterGroup) -> void:
     parameters = monster_group
     player_position = Party.position
     var _e := get_tree().change_scene('res://Battle/Battle.tscn')    
-
 
 func end_battle():
     var _e := get_tree().change_scene('res://Maps/' + current_map + '.tscn')

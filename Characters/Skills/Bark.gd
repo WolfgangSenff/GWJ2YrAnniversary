@@ -16,7 +16,7 @@ func execute(attack : MagicAttack) -> void:
     yield(tween, "tween_completed")
     for target in attack.targets:
         var direction = attacker.position.direction_to(target.position)
-        target.stats.hp += attack.magic_skill.attack_power
+        target.hp += attack.magic_skill.attack_power
         var bark_effect = BarkEffect.instance()
         bark_effect.rotation_degrees = rad2deg(direction.angle())
         add_child(bark_effect)

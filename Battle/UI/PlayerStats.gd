@@ -9,7 +9,7 @@ onready var bp_label = $VBoxContainer/BPContainer/BPLabel
 onready var max_bp_label = $VBoxContainer/BPContainer/MaxBPLabel
 
 
-func load_player(player : Attacker) -> void:
+func load_player(player : BasePlayer) -> void:
     var _e = player.connect("hp_changed", self, "_on_hp_changed")
     _e = player.connect("mp_changed", self, "_on_mp_changed")
     name_label.text = player._name

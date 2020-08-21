@@ -17,7 +17,7 @@ func execute(attack : MagicAttack) -> void:
     tween.start()
     yield(tween, "tween_completed")
     for target in attack.targets:
-        target.stats.hp += attack.magic_skill.attack_power
+        target.hp += attack.magic_skill.attack_power
         var heal_effect = HealEffect.instance()
         add_child(heal_effect)
         heal_effect.global_position = target.global_position

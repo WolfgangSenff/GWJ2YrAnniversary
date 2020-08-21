@@ -5,6 +5,10 @@
 
 [node name="Spikes" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+_name = "Spikes"
+hit_all = true
+mp_used = 10
+attack_power = 40
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." index="0"]
 emitting = false

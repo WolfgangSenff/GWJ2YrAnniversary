@@ -2,6 +2,8 @@ extends BaseCharacter
 
 class_name BasePlayer
 
+const XP_PER_LEVEL = 200
+
 signal attack_selected(attack)
 signal attack_canceled()
 
@@ -10,8 +12,34 @@ var targets : Array
 var current_target : BaseCharacter
 var target_selected_callback : FuncRef
 var accept_key_released = false
-var magic_skill : MagicSkill
+var magic_skill : BaseMagicAttack
 var single_target : bool
+
+# handle stats and leveling up
+
+func add_xp(_xp) -> void:
+    xp += _xp
+    while xp >= level * XP_PER_LEVEL:
+        xp -= level * XP_PER_LEVEL
+        level += 1
+
+func xp_until_next_level(xp_offset : int = 0) -> int:
+    var fake_level : int = level
+    var fake_xp : int = xp + xp_offset
+    while fake_xp >= fake_level * XP_PER_LEVEL:
+        fake_xp -= fake_level * XP_PER_LEVEL
+        fake_level += 1
+    return fake_level * XP_PER_LEVEL - (fake_xp)
+
+func level_after_xp(xp_offset : int) -> int:
+    var fake_level : int = level
+    var fake_xp : int = xp + xp_offset
+    while fake_xp >= fake_level * XP_PER_LEVEL:
+        fake_xp -= fake_level * XP_PER_LEVEL
+        fake_level += 1
+    return fake_level
+
+# battle stuff
 
 func _process(_delta):
     # Kept getting key presses pass over from the menus

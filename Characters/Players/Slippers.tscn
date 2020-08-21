@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/characters/dogtective_battle.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Players/BasePlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Skills/Purr.tscn" type="PackedScene" id=3]
+
+[node name="BasePlayer" instance=ExtResource( 2 )]
+_name = "Slippers"
+max_hp = 80
+hp = 45
+max_mp = 30
+mp = 20
+attack = 15
+defense = 10
+level = 5
+magic_skills = [ ExtResource( 3 ) ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 4
+frame = 1

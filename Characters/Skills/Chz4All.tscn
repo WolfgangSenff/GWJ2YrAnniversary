@@ -5,5 +5,10 @@
 
 [node name="Chz4All" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+_name = "Cheese4All"
+is_healing = true
+hit_all = true
+mp_used = 10
+attack_power = 20
 
 [node name="Tween" type="Tween" parent="." index="0"]

@@ -2,6 +2,6 @@ extends Resource
 
 class_name MagicAttack
 
-var attacker : BaseCharacter
+var attacker
 var targets : Array
-var magic_skill : MagicSkill
+var magic_skill

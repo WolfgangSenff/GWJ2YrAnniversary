@@ -1,15 +1,21 @@
 extends Node
 
-const dogtective = preload("res://Characters/Players/Dogtective.tres")
-const frank = preload("res://Characters/Players/Frank.tres")
-const mice_family = preload("res://Characters/Players/MiceFamily.tres")
+const Dogtective = preload("res://Characters/Players/Dogtective.tscn")
+const Slippers = preload("res://Characters/Players/Slippers.tscn")
+const Meester = preload("res://Characters/Players/Meester.tscn")
 
 var members : Array
 var position : Vector2
 var direction : Vector2
+var cheeze := 250
 
 func _ready():
     direction = Vector2.DOWN
-    members.append(dogtective)
-    members.append(frank)
-    members.append(mice_family)
+    members.append(Dogtective.instance())
+    members.append(Slippers.instance())
+    members.append(Meester.instance())
+
+func give_xp(xp : int) -> void:
+    for member in members:
+        if member.alive:
+            member.add_xp(xp)

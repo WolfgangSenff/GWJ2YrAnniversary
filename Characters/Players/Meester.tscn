@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/characters/dogtective_battle.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Players/BasePlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Skills/Chz4All.tscn" type="PackedScene" id=3]
+
+[node name="Meester" instance=ExtResource( 2 )]
+_name = "Meester"
+max_hp = 40
+hp = 40
+max_mp = 30
+mp = 30
+attack = 8
+defense = 10
+level = 4
+magic_skills = [ ExtResource( 3 ) ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 4
+frame = 3
