@@ -6,7 +6,6 @@
 
 [node name="Meester" instance=ExtResource( 2 )]
 _name = "Meester"
-<<<<<<< HEAD
 max_hp = 90
 hp = 40
 max_mp = 30
@@ -14,15 +13,6 @@ mp = 30
 attack = 2
 defense = 2
 level = 1
-=======
-max_hp = 40
-hp = 40
-max_mp = 30
-mp = 30
-attack = 8
-defense = 10
-level = 4
->>>>>>> main
 magic_skills = [ ExtResource( 3 ) ]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]

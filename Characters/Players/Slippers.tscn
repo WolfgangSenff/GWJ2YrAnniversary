@@ -6,7 +6,6 @@
 
 [node name="BasePlayer" instance=ExtResource( 2 )]
 _name = "Slippers"
-<<<<<<< HEAD
 max_hp = 130
 hp = 45
 max_mp = 30
@@ -14,15 +13,6 @@ mp = 20
 attack = 4
 defense = 4
 level = 1
-=======
-max_hp = 80
-hp = 45
-max_mp = 30
-mp = 20
-attack = 15
-defense = 10
-level = 5
->>>>>>> main
 magic_skills = [ ExtResource( 3 ) ]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]

@@ -7,10 +7,6 @@ onready var xp_left_label := $HBoxContainer3/XPLeftLabel
 
 var character : BaseCharacter
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 func load_character(_character : BaseCharacter) -> void:
     character = _character
     name_label.text = character._name
