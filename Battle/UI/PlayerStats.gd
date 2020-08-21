@@ -8,10 +8,13 @@ onready var max_hp_label = $VBoxContainer/HPContainer/MaxHPLabel
 onready var bp_label = $VBoxContainer/BPContainer/BPLabel
 onready var max_bp_label = $VBoxContainer/BPContainer/MaxBPLabel
 
+var start_rect_position : Vector2
+
 
 func load_player(player : BasePlayer) -> void:
     var _e = player.connect("hp_changed", self, "_on_hp_changed")
     _e = player.connect("mp_changed", self, "_on_mp_changed")
+    _e = player.connect("active_changed", self, "_on_active_changed")
     name_label.text = player._name
     level_label.text = str(player.level)
     hp_label.text = str(player.hp)
@@ -32,3 +35,16 @@ func _on_mp_changed(old_mp, new_mp) -> void:
 
 func _set_mp_text(value : int) -> void:
     bp_label.text = str(value)
+
+func _on_active_changed(active : bool) -> void:
+    var end_position : Vector2
+    if active and rect_position.y == 0:
+        end_position = rect_position
+        end_position.y = -12
+    elif not active and rect_position.y < 0:
+        end_position = rect_position
+        end_position.y = 0
+    else:
+        return
+    tween.interpolate_property(self, "rect_position", rect_position, end_position, .5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+    tween.start()

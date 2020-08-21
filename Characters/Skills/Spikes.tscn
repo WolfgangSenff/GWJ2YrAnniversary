@@ -8,7 +8,7 @@ script = ExtResource( 2 )
 _name = "Spikes"
 hit_all = true
 mp_used = 10
-attack_power = 40
+attack_power = 3
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." index="0"]
 emitting = false

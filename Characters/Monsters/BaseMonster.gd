@@ -6,7 +6,7 @@ func _ready():
     hp = max_hp
 
 func select_attack(targets):
-    var living_targets : Array 
+    var living_targets := []
     for target in targets:
         if target.alive:
             living_targets.append(target)

@@ -17,7 +17,6 @@ onready var fight_menu = $CanvasLayer/FightMenu
 onready var fight_menu_buttons = $CanvasLayer/FightMenu/NinePatchRect/FightMenuButtons
 onready var attack_button = $CanvasLayer/FightMenu/NinePatchRect/FightMenuButtons/AttackButton
 onready var magic_button = $CanvasLayer/FightMenu/NinePatchRect/FightMenuButtons/MagicButton
-onready var special_button = $CanvasLayer/FightMenu/NinePatchRect/FightMenuButtons/SpecialButton
 onready var run_button = $CanvasLayer/FightMenu/NinePatchRect/FightMenuButtons/RunButton
 onready var magic_menu = $CanvasLayer/MagicMenu
 onready var magic_menu_container = $CanvasLayer/MagicMenu/NinePatchRect/MagicMenuButtons
@@ -39,13 +38,12 @@ func _ready() -> void:
     _select_player_action()
     var _e = attack_button.connect('pressed', self, '_start_physical_attack')
     _e = magic_button.connect('pressed', self, '_select_magic_attack')
-    _e = special_button.connect('pressed', self, '_start_special_attack')
     _e = run_button.connect('pressed', self, '_run_or_back')
     _e = magic_menu.connect("menu_canceled", self, "_select_player_action")
     _e = magic_menu.connect("magic_attack_selected", self, "_start_magic_attack")
 
 func _unhandled_key_input(_event):
-    if not current_member.active and Input.is_action_just_pressed("ui_cancel") and current_member != _first_living_member():
+    if fight_menu.visible and Input.is_action_just_pressed("ui_cancel") and current_member != _first_living_member():
         _prev_member()
 
 func _first_living_member() -> BasePlayer:
@@ -61,6 +59,7 @@ func _load_party() -> void:
     for member in Party.members:
         add_child(member)
         member.position = position
+        member.call_deferred("in_battle")
         var _e = member.connect("attack_selected", self, "_attack_selected")
         _e = member.connect("attack_canceled", self, "_attack_canceled")
         party.append(member)
@@ -89,6 +88,7 @@ func _load_monsters() -> void:
             monster = monster.instance()
             monster.hp = monster.max_hp
             monster.mp = monster.max_mp
+            monster.call_deferred("in_battle")
             var _e = monster.connect('character_died', self, "_on_monster_died")
             add_child(monster)
             monster.position = position
@@ -109,6 +109,7 @@ func _prev_member():
     var index = party.find(current_member)
     index -= 1
     if index >= 0:
+        var _e = attacks.pop_back()
         current_member = party[index]
         _select_player_action()
     else:
@@ -117,7 +118,7 @@ func _prev_member():
 func _execute_attacks() -> void:
     _reset_highlighting()
     for attack in attacks:
-        if attack.attacker.alive:
+        if attack.attacker.alive and in_battle:
             if attack is PhysicalAttack:
                 attack.target = _get_living_target(attack.target)
                 if attack.target and attack.target.alive:
@@ -150,9 +151,8 @@ func _select_player_action(highlight_index := 0) -> void:
     if not current_member:
         _battle_lost()
     if in_battle:
-        fight_menu.visible = true
-        current_member.active = false
-        _reset_highlighting()
+        fight_menu.set_deferred("visible", true)
+#        _reset_highlighting()
         _highlight_current_member()
         fight_menu_buttons.get_child(highlight_index).grab_focus()
 
@@ -162,26 +162,32 @@ func _highlight_current_member() -> void:
         if member == current_member:
             alpha = 1
         member.modulate.a = alpha
+        member.active = alpha == 1
 
 func _reset_highlighting() -> void:
     for member in party:
         member.modulate.a = 1
+        member.active = false
+
+func _get_living_monsters() -> Array:
+    var living_monsters := []
+    for monster in monsters:
+        if monster.alive:
+            living_monsters.append(monster)
+    return living_monsters
 
 func _start_physical_attack() -> void:
     fight_menu.visible = false
-    current_member.start_physical_attack(monsters)
+    current_member.start_physical_attack(_get_living_monsters())
 
 func _select_magic_attack() -> void:
+    fight_menu.visible = false
     magic_menu.load_magic_skills(current_member.magic_skills)
 
 func _start_magic_attack(magic_skill : BaseMagicAttack) -> void:
     fight_menu.visible = false
     magic_menu.visible = false
-    current_member.start_magic_attack(magic_skill, party, monsters)
-
-func _start_special_attack() -> void:
-    fight_menu.visible = false
-    current_member.start_special_attack()
+    current_member.start_magic_attack(magic_skill, party, _get_living_monsters())
 
 func _run_or_back() -> void:
     _prev_member()
@@ -216,8 +222,8 @@ func _battle_lost() -> void:
     if in_battle:
         in_battle = false
         yield(get_tree().create_timer(1), "timeout")
-        print('you lose ' + str(Party.cheese / 2) + 'g of cheese!')
-        Party.cheese /= 2
+        print('you lose ' + str(Party.cheeze / 2) + 'g of cheese!')
+        Party.cheeze /= 2
         _detach_party()
         Events.end_battle()
 

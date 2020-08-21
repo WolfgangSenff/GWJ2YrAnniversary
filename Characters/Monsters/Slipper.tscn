@@ -4,10 +4,10 @@
 [ext_resource path="res://Characters/Monsters/BaseMonster.tscn" type="PackedScene" id=2]
 
 [node name="Slipper" instance=ExtResource( 2 )]
-max_hp = 35
+max_hp = 50
 max_mp = 20
-attack = 12
-defense = 8
+attack = 5
+defense = 2
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 texture = ExtResource( 1 )

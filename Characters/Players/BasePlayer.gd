@@ -6,8 +6,12 @@ const XP_PER_LEVEL = 200
 
 signal attack_selected(attack)
 signal attack_canceled()
+signal active_changed(active)
 
-var active := false
+export (bool) var is_magician = false
+export (bool) var is_physical = false
+
+var active := false setget _set_active
 var targets : Array
 var current_target : BaseCharacter
 var target_selected_callback : FuncRef
@@ -20,8 +24,26 @@ var single_target : bool
 func add_xp(_xp) -> void:
     xp += _xp
     while xp >= level * XP_PER_LEVEL:
-        xp -= level * XP_PER_LEVEL
-        level += 1
+        _level_up()
+
+func _level_up() -> void:
+    xp -= level * XP_PER_LEVEL
+    level += 1
+    max_hp += 50 * (level + level % 3) / 10
+    var mag = 4
+    var atk = 4
+    var def = 4
+    if is_physical:
+        mag -= 3
+        atk += 2
+        def += 1
+    elif is_magician:
+        atk -= 2
+        mag += 2
+    max_mp += mag * level / 100 + 3
+    attack += atk
+    defense += def
+
 
 func xp_until_next_level(xp_offset : int = 0) -> int:
     var fake_level : int = level
@@ -47,7 +69,7 @@ func _process(_delta):
         accept_key_released = not Input.is_action_pressed("ui_accept")
 
 func _unhandled_key_input(_event):
-    if active and accept_key_released:
+    if visible and active and accept_key_released:
         _target_select_input()
 
 func _target_select_input():
@@ -81,22 +103,21 @@ func _select_target(_targets : Array) -> void:
 func get_action_names():
     return ["Bite", "Bark", "Sniff", "Tail"]
 
-func start_physical_attack(_targets) -> void:
-    active = true
+func start_physical_attack(_targets : Array) -> void:
+#    self.active = true
     accept_key_released = false
     target_selected_callback = funcref(self, "_send_physical_attack")
     _select_target(_targets)
 
 func _send_physical_attack() -> void:
     _clear_targets()
-    active = false
+    target_selected_callback = null
     var physical_attack = PhysicalAttack.new()
     physical_attack.target = current_target
     physical_attack.attacker = self
     emit_signal("attack_selected", physical_attack)
 
 func start_magic_attack(_magic_skill, party, monsters) -> void:
-    active = true
     accept_key_released = false
     magic_skill = _magic_skill
     var func_string = "_send_magic_attack"
@@ -125,16 +146,18 @@ func _send_magic_attack_all() -> void:
 
 func _send_magic_attack(_targets) -> void:
     _clear_targets()
-    active = false
+    target_selected_callback = null
     var magic_attack = MagicAttack.new()
     magic_attack.targets = _targets
     magic_attack.attacker = self
     magic_attack.magic_skill = magic_skill
     emit_signal("attack_selected", magic_attack)    
 
-func start_special_attack() -> void:
-    print('special')
-
 func _clear_targets() -> void:
     for target in targets:
         target.reset_modulate()
+
+func _set_active(value) -> void:
+    if active != value:
+        emit_signal("active_changed", value)
+    active = value

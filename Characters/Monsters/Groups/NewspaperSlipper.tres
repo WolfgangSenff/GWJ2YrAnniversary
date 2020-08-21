@@ -7,5 +7,5 @@
 [resource]
 script = ExtResource( 1 )
 monsters = [ ExtResource( 2 ), ExtResource( 3 ) ]
-xp = 100
+xp = 140
 cheeze = 220

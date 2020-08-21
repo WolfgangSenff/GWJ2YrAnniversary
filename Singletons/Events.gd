@@ -44,4 +44,6 @@ func start_battle(monster_group : MonsterGroup) -> void:
     var _e := get_tree().change_scene('res://Battle/Battle.tscn')    
 
 func end_battle():
+    for member in Party.members:
+        member.in_battle = false
     var _e := get_tree().change_scene('res://Maps/' + current_map + '.tscn')

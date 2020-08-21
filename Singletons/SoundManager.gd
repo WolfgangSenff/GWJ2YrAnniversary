@@ -17,7 +17,7 @@ var current_music : AudioStreamPlayer
 var fade_out_tween := Tween.new()
 
 func _ready() -> void:
-    fade_out_tween.connect("tween_completed", self, "tween_completed")
+    var _e = fade_out_tween.connect("tween_completed", self, "tween_completed")
     add_child(fade_out_tween)
 
 func tween_completed(_object: Object, _key: NodePath) -> void:

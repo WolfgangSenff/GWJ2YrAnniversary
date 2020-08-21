@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/sprites/tiles/grass.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/ui/textbox.png" type="Texture" id=2]
@@ -39,10 +39,6 @@
 [sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
@@ -86,10 +82,10 @@ __meta__ = {
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/FightMenu"]
 margin_left = 280.0
-margin_top = 164.0
+margin_top = 179.0
 margin_right = 360.0
-margin_bottom = 284.0
-rect_min_size = Vector2( 80, 120 )
+margin_bottom = 269.0
+rect_min_size = Vector2( 80, 90 )
 texture = ExtResource( 2 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -135,23 +131,10 @@ custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Bark"
 
-[node name="SpecialButton" type="Button" parent="CanvasLayer/FightMenu/NinePatchRect/FightMenuButtons"]
+[node name="RunButton" type="Button" parent="CanvasLayer/FightMenu/NinePatchRect/FightMenuButtons"]
 margin_top = 54.0
 margin_right = 73.0
 margin_bottom = 78.0
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = ExtResource( 6 )
-custom_styles/normal = ExtResource( 5 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-text = "Sniff"
-
-[node name="RunButton" type="Button" parent="CanvasLayer/FightMenu/NinePatchRect/FightMenuButtons"]
-margin_top = 81.0
-margin_right = 73.0
-margin_bottom = 105.0
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = ExtResource( 6 )
@@ -162,6 +145,7 @@ custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Tail"
 
 [node name="MagicMenu" type="CenterContainer" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )

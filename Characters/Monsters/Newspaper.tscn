@@ -7,8 +7,8 @@
 _name = "Newspaper"
 max_hp = 60
 max_mp = 10
-attack = 10
-defense = 7
+attack = 3
+defense = 3
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 texture = ExtResource( 1 )

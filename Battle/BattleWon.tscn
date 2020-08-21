@@ -61,6 +61,10 @@ margin_bottom = 88.0
 [node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 104.0
 margin_bottom = 24.0
+<<<<<<< HEAD
+size_flags_horizontal = 3
+=======
+>>>>>>> main
 text = "XP earned:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,14 +72,35 @@ __meta__ = {
 
 [node name="XPLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 108.0
+<<<<<<< HEAD
+margin_right = 161.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+=======
 margin_right = 142.0
 margin_bottom = 24.0
+>>>>>>> main
 text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label4" type="VSeparator" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+<<<<<<< HEAD
+margin_left = 165.0
+margin_right = 377.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Label5" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 381.0
+margin_right = 536.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Cheeze earned: "
+align = 2
+=======
 margin_left = 146.0
 margin_right = 397.0
 margin_bottom = 24.0
@@ -86,15 +111,25 @@ margin_left = 401.0
 margin_right = 556.0
 margin_bottom = 24.0
 text = "Cheeze earned: "
+>>>>>>> main
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CheezeLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+<<<<<<< HEAD
+margin_left = 540.0
+margin_right = 594.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "100"
+align = 2
+=======
 margin_left = 560.0
 margin_right = 594.0
 margin_bottom = 24.0
 text = "100"
+>>>>>>> main
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -103,7 +138,14 @@ __meta__ = {
 margin_left = 598.0
 margin_right = 608.0
 margin_bottom = 24.0
+<<<<<<< HEAD
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
 text = "g"
+align = 2
+=======
+text = "g"
+>>>>>>> main
 __meta__ = {
 "_edit_use_anchors_": false
 }
