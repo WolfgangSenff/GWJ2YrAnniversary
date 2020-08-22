@@ -38,13 +38,11 @@ func _set_mp_text(value : int) -> void:
 
 func _on_active_changed(active : bool) -> void:
     var end_position : Vector2
-    if active and rect_position.y == 0:
+    if active:
         end_position = rect_position
         end_position.y = -12
-    elif not active and rect_position.y < 0:
+    else:
         end_position = rect_position
         end_position.y = 0
-    else:
-        return
     tween.interpolate_property(self, "rect_position", rect_position, end_position, .5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
     tween.start()

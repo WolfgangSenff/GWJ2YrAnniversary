@@ -155,7 +155,8 @@ func _send_magic_attack(_targets) -> void:
 
 func _clear_targets() -> void:
     for target in targets:
-        target.reset_modulate()
+        if target:
+            target.reset_modulate()
 
 func _set_active(value) -> void:
     if active != value:

@@ -182,7 +182,7 @@ func _start_physical_attack() -> void:
 
 func _select_magic_attack() -> void:
     fight_menu.visible = false
-    magic_menu.load_magic_skills(current_member.magic_skills)
+    magic_menu.load_magic_skills(current_member.magic_skills, current_member.mp)
 
 func _start_magic_attack(magic_skill : BaseMagicAttack) -> void:
     fight_menu.visible = false
@@ -233,4 +233,6 @@ func _battle_quit() -> void:
 
 func _detach_party() -> void:
     for member in Party.members:
+        member.in_battle = false
+        member.active = false
         remove_child(member)

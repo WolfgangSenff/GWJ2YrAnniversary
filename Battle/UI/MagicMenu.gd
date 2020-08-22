@@ -15,13 +15,15 @@ func _unhandled_key_input(_event) -> void:
         if Input.is_action_just_pressed("ui_cancel"):
             _cancel()
 
-func load_magic_skills(magic_skills : Array) -> void:
+func load_magic_skills(magic_skills : Array, mp_left : int) -> void:
     if magic_skills:
         for child in magic_menu_buttons.get_children():
             magic_menu_buttons.remove_child(child)
             child.queue_free()
         for skill in magic_skills:
             var button = ItemButton.instance()
+            if skill.mp_used > mp_left:
+                button.disabled = true
             button.text = skill._name + ': ' + str(skill.mp_used)
             button.connect("button_down", self, "_on_button_selected", [skill])
             magic_menu_buttons.add_child(button)

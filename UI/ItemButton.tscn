@@ -3,20 +3,24 @@
 [ext_resource path="res://UI/ButtonNormal.tres" type="StyleBox" id=1]
 [ext_resource path="res://UI/ButtonFocus.tres" type="StyleBox" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="AttackButton" type="Button"]
 margin_right = 44.0
 margin_bottom = 9.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = ExtResource( 2 )
 custom_styles/normal = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.466667, 0.4, 0.4, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 keep_pressed_outside = true
 text = "Bite"
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

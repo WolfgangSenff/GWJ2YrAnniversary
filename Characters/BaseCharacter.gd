@@ -56,9 +56,12 @@ func _deal_physical_damage_to(target : BaseCharacter) -> void:
 
 func magic_attack(_attack) -> void:
     var skill : BaseMagicAttack = _attack.magic_skill.duplicate()
-    add_child(skill)
-    mp -= skill.mp_used
-    yield(skill.execute(_attack), "completed")
+    if mp >= skill.mp_used:
+        add_child(skill)
+        self.mp -= skill.mp_used
+        yield(skill.execute(_attack), "completed")
+    else:
+        yield(get_tree(), "idle_frame")
 
 func reset_modulate() -> void:
     modulate.a = 1.0
@@ -83,7 +86,6 @@ func _set_targeted(value) -> void:
             animation_player.stop()
 
 func _set_hp(_hp):
-    print('hit')
     if in_battle:
         var damage_text = DamageText.instance()
         damage_text.damage = hp - _hp
