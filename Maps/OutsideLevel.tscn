@@ -145,8 +145,8 @@ position = Vector2( 1596, 473 )
 DialogRes = ExtResource( 8 )
 
 [node name="BattleSearcher" parent="Actions" index="0" instance=ExtResource( 4 )]
-max_steps = 2000
-min_steps = 1000
+max_steps = 200
+min_steps = 100
 monster_groups = [ ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/BattleSearcher" index="0"]
