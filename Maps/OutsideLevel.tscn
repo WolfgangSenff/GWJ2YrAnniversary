@@ -116,7 +116,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 48, 64, 48 )
 } ]
 0/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 927, 375 )
 
 [node name="OutsideLevel" instance=ExtResource( 1 )]
@@ -152,7 +152,7 @@ monster_groups = [ ExtResource( 5 ), ExtResource( 6 ) ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/BattleSearcher" index="0"]
 visible = false
 position = Vector2( 885, 299 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
 [node name="RichardsHouseMap" parent="Actions" index="1" instance=ExtResource( 10 )]
 position = Vector2( 864, 160 )
