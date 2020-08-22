@@ -5,6 +5,7 @@
 [ext_resource path="res://Shaders/SniffableShader.tres" type="Material" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 13.1862
 height = 13.6721
 
 [node name="Poop" type="Area2D" groups=[

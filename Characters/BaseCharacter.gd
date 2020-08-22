@@ -67,8 +67,7 @@ func reset_modulate() -> void:
     modulate.a = 1.0
     modulate.r = 1.0
     if animation_player.is_playing():
-        animation_player.stop()
-        animation_player.seek(0, true)
+        animation_player.stop(true)
 
 func _character_died() -> void:
     alive = false
@@ -82,8 +81,7 @@ func _set_targeted(value) -> void:
         animation_player.play("Targeted")
     else:
         if animation_player.is_playing():
-            animation_player.seek(0, true)
-            animation_player.stop()
+            animation_player.stop(true)
 
 func _set_hp(_hp):
     if in_battle:

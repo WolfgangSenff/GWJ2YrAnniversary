@@ -14,7 +14,7 @@ onready var sounds := {
 
 var queued_music : AudioStreamPlayer
 var current_music : AudioStreamPlayer
-var fade_out_tween := Tween.new()
+onready var fade_out_tween := Tween.new()
 
 func _ready() -> void:
     var _e = fade_out_tween.connect("tween_completed", self, "tween_completed")

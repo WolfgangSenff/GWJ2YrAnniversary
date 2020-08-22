@@ -4,6 +4,7 @@ class_name Dogtective
 
 const ThoughtBubble = preload("res://UI/ThoughtBubble.tscn")
 
+signal thought_done
 signal sniffer_updated(sniffables)
 onready var sniff_timer = $SniffTimer
 
@@ -55,8 +56,10 @@ func _physics_process(_delta):
 
 func show_thought_bubble(text : String) -> void:
     var thought_bubble = ThoughtBubble.instance()
-    thought_bubble.load_text(text)
     add_child(thought_bubble)
+    thought_bubble.load_text(text)
+    yield(thought_bubble, "text_done")
+    emit_signal("thought_done")
     
 func set_all_sniffables(value):
     _sniffables = value

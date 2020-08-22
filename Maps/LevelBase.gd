@@ -6,6 +6,8 @@ export (String) var music_track
 
 #var random_sniffer_history = [SnifferPower.SnifferLevelRecord.Fight, SnifferPower.SnifferLevelRecord.Investigation, SnifferPower.SnifferLevelRecord.Memory]
 
+onready var PoopDialog = load("res://resources/Dialogs/DogPoop.tres")
+
 func _ready():
     SoundManager.play_music(music_track, true, true, false, 1)
     var current_sniffables = get_tree().get_nodes_in_group("Sniffable")
@@ -19,3 +21,4 @@ func _on_sniffer_updated(sniffables):
 func _on_Button_pressed():
     #SnifferPower.raise_sniffer_level(random_sniffer_history[randi() % random_sniffer_history.size()])
     SnifferPower.raise_sniffer_level()
+
