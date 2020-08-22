@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var dog = $YSort/Dogtective
+onready var dog = $YSortTileMap/Dogtective
 
 export (String) var music_track
 

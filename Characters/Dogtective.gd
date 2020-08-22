@@ -31,7 +31,7 @@ func set_is_walking(value):
 func get_is_walking():
     anim_tree.get("parameters/conditions/is_walking")
 
-export var speed := 130
+export var speed := 140
 
 var direction : Vector2
 

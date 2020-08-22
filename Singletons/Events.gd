@@ -5,7 +5,7 @@ const DOG_SIZE = 32
 const DOG_COLLISION_Y = 26
 
 var current_map = "OutsideLevel"
-var player_position = Vector2(285, 130)
+var player_position = Vector2(258, 256)
 # Used to pass a variable from one scene to the next
 var parameters
 

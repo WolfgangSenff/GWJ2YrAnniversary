@@ -22,7 +22,7 @@ func _on_update_sniffer_level():
     if sniff_hint_children and sniff_hint_children.size() > 0:
         var idx = 0
         for sniff_hint in sniff_hint_children:
-            if SnifferPower.current_sniffables and idx < SnifferPower.current_sniffables.size():
+            if SnifferPower.current_sniffables and idx < SnifferPower.current_sniffables.size() and SnifferPower.current_sniffables[idx]:
                 sniff_hint.sniff_color = SnifferPower.current_sniffables[idx].SniffColor
             else:
                 sniff_hint.sniff_color = Color.antiquewhite
