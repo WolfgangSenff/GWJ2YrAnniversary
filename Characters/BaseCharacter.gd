@@ -3,7 +3,7 @@ extends Node2D
 class_name BaseCharacter
 
 export (String) var _name
-export (int, 1, 999) var max_hp
+export (int, 1, 9999) var max_hp
 export (int) var hp setget _set_hp
 export (int, 1, 999) var max_mp
 export (int) var mp setget _set_mp

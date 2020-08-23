@@ -3,11 +3,13 @@ extends Node
 const TILE_SIZE = 64
 const DOG_SIZE = 32
 const DOG_COLLISION_Y = 26
+const father_time = preload("res://Characters/Monsters/Groups/FatherTime.tres")
 
 var current_map = "OutsideLevel"
 var player_position = Vector2(258, 256)
 # Used to pass a variable from one scene to the next
 var parameters
+var final_battle = false
 
 # Loads a new map.
 #   map_name: The name of the scene to load sans .tscn. If
@@ -41,7 +43,11 @@ func change_map(map_name : String, tilemap_coordinates : Vector2, direction : Ve
 func start_battle(monster_group : MonsterGroup) -> void:
     parameters = monster_group
     player_position = Party.position
-    var _e := get_tree().change_scene('res://Battle/Battle.tscn')    
+    var _e := get_tree().change_scene('res://Battle/Battle.tscn')
+
+func start_final_battle() -> void:
+    final_battle = true
+    start_battle(father_time)
 
 func end_battle():
     for member in Party.members:
