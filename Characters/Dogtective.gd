@@ -15,6 +15,8 @@ onready var blend_space setget set_blend_space
 
 var _sniffables = []
 
+export (bool) onready var PlayerControlled
+
 func set_blend_space(value):
     anim_tree.set("parameters/IdleBlendSpace/blend_position", value)
     anim_tree.set("parameters/WalkBlendSpace/blend_position", value)
@@ -33,26 +35,36 @@ func get_is_walking():
 
 export var speed := 140
 
-var direction : Vector2
 var sound_name : String
+onready var direction : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-    position = Events.player_position
-    direction = Party.direction
+    if PlayerControlled:
+        position = Events.player_position
+        direction = Party.direction
+    else:
+        direction = Vector2.DOWN
+        
     self.blend_space = Vector2(direction.x, -direction.y)
 
 func _exit_tree():
     SoundManager.stop_looping_sound(Party.walking_sound_name)
 
 func _physics_process(_delta):
-    direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-    direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+    if PlayerControlled:
+        direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+        direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+    else:
+        direction.x = Input.get_action_strength("ai_right") - Input.get_action_strength("ai_left")
+        direction.y = Input.get_action_strength("ai_down") - Input.get_action_strength("ai_up")
+        
     if direction:
         var _e = move_and_slide(direction.normalized() * speed)
         self.blend_space = Vector2(direction.x, -direction.y)
-        Party.position = position
-        Party.direction = direction
         SoundManager.play_sound(Party.walking_sound_name, false, true)
+        if PlayerControlled:
+            Party.position = position
+            Party.direction = direction
         self.is_walking = true
         self.is_idle = false
     else:
@@ -60,8 +72,15 @@ func _physics_process(_delta):
         self.is_idle = true
         self.is_walking = false
 
+func press_skip_text():
+    if current_thought_bubble:
+        current_thought_bubble.skip_pressed = true
+        
+var current_thought_bubble
+
 func show_thought_bubble(text : String) -> void:
     var thought_bubble = ThoughtBubble.instance()
+    current_thought_bubble = thought_bubble
     add_child(thought_bubble)
     thought_bubble.load_text(text)
     yield(thought_bubble, "text_done")
@@ -82,7 +101,7 @@ class SnifferSorter:
         return a.SniffLevel < b.SniffLevel
 
 func _on_SniffTimer_timeout():
-    if _sniffables and _sniffables.size() > 0:
+    if _sniffables and _sniffables.size() > 0 and PlayerControlled:
         var sorter = SnifferSorter.new(self.global_position)
         _sniffables.sort_custom(sorter, "sort_by_level")
         _sniffables.sort_custom(sorter, "sort_by_distance")

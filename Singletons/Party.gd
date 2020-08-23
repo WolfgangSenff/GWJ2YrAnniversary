@@ -8,7 +8,7 @@ var members : Array
 var position : Vector2
 var direction : Vector2
 var cheeze := 250
-var walking_sound_name : String = "walking on grass"
+var walking_sound_name : String = "walk on grass"
 
 func _ready():
     direction = Vector2.DOWN
