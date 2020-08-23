@@ -8,6 +8,7 @@ func init_dialog(dog, obj):
     if dog and obj and AllLines and AllLines.size() > 0:
         var first_speaker = dog if DogSpeaksFirst else obj
         var second_speaker = dog if not DogSpeaksFirst else obj
+        second_speaker = second_speaker if obj else first_speaker
         var first_speaking = true
         for line in AllLines:
             var current_speaker = first_speaker if first_speaking else second_speaker

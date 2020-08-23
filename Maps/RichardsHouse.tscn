@@ -79,14 +79,10 @@ map_name = "Study"
 coordinates = Vector2( 2, 9 )
 direction = Vector2( 0, -1 )
 
-[node name="BattleSearcher" parent="Actions" index="5" instance=ExtResource( 9 )]
-max_steps = 400
-min_steps = 200
-monster_groups = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Actions/BattleSearcher" index="0"]
-position = Vector2( 825, 543 )
-shape = SubResource( 1 )
+[node name="Secret" parent="Actions" index="5" instance=ExtResource( 2 )]
+position = Vector2( 1309.28, 874.961 )
+map_name = "SecretKitchenRoom"
+direction = Vector2( 0, 1 )
 
 [node name="Camera" parent="." index="4"]
 position = Vector2( 774, 1000 )

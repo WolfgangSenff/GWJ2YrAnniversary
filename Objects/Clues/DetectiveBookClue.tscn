@@ -9,6 +9,7 @@ radius = 15.6297
 height = 4.51602
 
 [node name="DetectiveBookClue" instance=ExtResource( 1 )]
+sniffer_level = 4
 DialogRes = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]

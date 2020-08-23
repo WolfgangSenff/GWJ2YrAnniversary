@@ -28,11 +28,20 @@ position = Vector2( 271, 242 )
 [node name="Dresser2" parent="YSortTileMap/Objects" index="2" instance=ExtResource( 4 )]
 position = Vector2( 657, 241 )
 
+[node name="Shirt" type="Sprite" parent="YSortTileMap/Objects" index="3"]
+position = Vector2( 399, 270 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
 [node name="RichardsHouseMap" parent="Actions" index="0" instance=ExtResource( 2 )]
 position = Vector2( 287, 608 )
 map_name = "RichardsHouse"
 coordinates = Vector2( 5, 1 )
 direction = Vector2( 0, 1 )
+
+[node name="DialogTrigger" parent="Actions" index="1" instance=ExtResource( 5 )]
+position = Vector2( 359, 280 )
+DialogRes = ExtResource( 7 )
 
 [node name="Camera" parent="." index="4"]
 position = Vector2( 288, 507 )

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Clues/Clue.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/clues/scarf.png" type="Texture" id=2]
+[ext_resource path="res://resources/Dialogs/Scarf.tres" type="Resource" id=3]
+
+[node name="ScarfClue" instance=ExtResource( 1 )]
+SniffColor = Color( 0.784314, 0, 0.752941, 1 )
+sniffer_level = 3
+DialogRes = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )

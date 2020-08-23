@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-AllLines = [ "This was our favorite book...", "We used to read together on the couch.", "Richard...where are you?" ]
+AllLines = [ "I miss his smell." ]
 DogSpeaksFirst = true
