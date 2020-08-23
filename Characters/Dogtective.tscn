@@ -211,6 +211,7 @@ start_node = "IdleBlendSpace"
 collision_layer = 2
 script = ExtResource( 2 )
 PlayerControlled = true
+speed = 250
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -31, -56 )

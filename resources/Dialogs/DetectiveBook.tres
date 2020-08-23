@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://resources/DialogResource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+AllLines = [ "This was Richard's favorite book...", "We used to read together on the couch.", "Richard... Where are you?" ]
+DogSpeaksFirst = true
