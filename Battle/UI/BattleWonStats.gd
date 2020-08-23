@@ -12,6 +12,10 @@ func load_character(_character : BaseCharacter) -> void:
     name_label.text = character._name
     level_label.text = str(character.level)
     xp_left_label.text = str(character.xp_until_next_level())
+    if character._name == "Meester":
+        portrait.texture = preload("res://assets/sprites/characters/meester_portrait.png")
+    elif character._name == "Slippers":
+        portrait.texture = preload("res://assets/sprites/characters/slippers_portrait.png")
 
 func update_xp(xp : int) -> void:
     level_label.text = str(character.level_after_xp(xp))

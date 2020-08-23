@@ -12,7 +12,6 @@ func _ready() -> void:
     _e = connect("body_exited", self, "_on_body_exited")
     steps_until_battle = randi() % (max_steps - min_steps) + min_steps
 
-
 # If the player is in this area, count down steps until 0,
 # then start the battle.
 func _process(_delta) -> void:
@@ -35,10 +34,8 @@ func _take_step() -> void:
     
 
 func _on_body_entered(body : Dogtective) -> void:
-    if body and body.is_in_group('Dogtective'):
-        active = true
+    active = true
 
 
 func _on_body_exited(body : Dogtective) -> void:
-    if body and body.is_in_group('Dogtective'):
-        active = false
+    active = false

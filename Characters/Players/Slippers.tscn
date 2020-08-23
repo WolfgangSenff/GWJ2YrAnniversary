@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/sprites/characters/dogtective_battle.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/characters/slippers.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Players/BasePlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Skills/Purr.tscn" type="PackedScene" id=3]
 
@@ -20,6 +20,6 @@ back_command = "Back"
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 texture = ExtResource( 1 )
-vframes = 2
+vframes = 3
 hframes = 4
 frame = 1

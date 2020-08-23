@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Monsters/Groups/MonsterGroup.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Monsters/GluetrapMonster.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+monsters = [ ExtResource( 2 ) ]
+xp = 100
+cheeze = 300

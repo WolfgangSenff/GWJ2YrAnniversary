@@ -14,7 +14,6 @@ func _ready():
     direction = Vector2.DOWN
     members.append(Dogtective.instance())
     members.append(Slippers.instance())
-    members.append(Meester.instance())
 
 func give_xp(xp : int) -> void:
     for member in members:

@@ -35,7 +35,8 @@ func _add_xp_and_gold() -> void:
     tween.interpolate_method(self, "_add_cheeze", 0, monster_group.cheeze, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
     tween.interpolate_method(self, "_add_xp", 0, monster_group.xp, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
     tween.start()
-    tween.connect("tween_all_completed", self, "_xp_and_cheeze_added")
+    if !tween.is_connected("tween_all_completed", self, "_xp_and_cheeze_added"):
+        tween.connect("tween_all_completed", self, "_xp_and_cheeze_added")
 
 func _end_battle() -> void:
     Events.end_battle()
