@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Monsters/BaseMonster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/tiles/tv.png" type="Texture" id=2]
+
+[node name="TV" instance=ExtResource( 1 )]
+_name = "TV"
+max_hp = 120
+max_mp = 40
+mp = 5000
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+texture = ExtResource( 2 )
