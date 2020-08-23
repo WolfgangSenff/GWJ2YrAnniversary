@@ -52,4 +52,6 @@ func start_final_battle() -> void:
 func end_battle():
     for member in Party.members:
         member.in_battle = false
+    if final_battle:
+        player_position.y += 10
     var _e := get_tree().change_scene('res://Maps/' + current_map + '.tscn')
