@@ -4,6 +4,7 @@ class_name BaseMonster
 
 func _ready():
     hp = max_hp
+    mp = max_mp
 
 func select_attack(targets):
     var living_targets := []
@@ -14,7 +15,7 @@ func select_attack(targets):
     var target = living_targets[index]
     
     
-    if magic_skills.size() > 0 and randi() % 10 > 3:
+    if magic_skills.size() > 0 and randi() % 10 > 4 and mp > 10:
         var magic_skill : BaseMagicAttack = magic_skills[randi() % magic_skills.size()]
         var magic_attack = MagicAttack.new()
         if magic_skill.hit_all:
