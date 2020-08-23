@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Maps/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actions/MapChange.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Refrigerator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/KitchenCounter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/KitchenTable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/DiningRoomTable.tscn" type="PackedScene" id=6]
 
 [node name="RichardsHouse" instance=ExtResource( 1 )]
 music_track = "nostalgia theme (upbeat)"
@@ -27,6 +28,9 @@ position = Vector2( 1520, 224 )
 [node name="KitchenTable" parent="YSortTileMap/Objects" index="2" instance=ExtResource( 5 )]
 position = Vector2( 1280, 557 )
 
+[node name="DiningRoomTable" parent="YSortTileMap/Objects" index="3" instance=ExtResource( 6 )]
+position = Vector2( 1307, 967 )
+
 [node name="RichardsRoomMap" parent="Actions" index="0" instance=ExtResource( 2 )]
 position = Vector2( 352, -1 )
 map_name = "RichardsRoom"
@@ -48,7 +52,7 @@ direction = Vector2( 0, 1 )
 [node name="BathroomMap" parent="Actions" index="3" instance=ExtResource( 2 )]
 position = Vector2( 672, -1 )
 map_name = "Bathroom"
-coordinates = Vector2( 5, 9 )
+coordinates = Vector2( 5, 6 )
 direction = Vector2( 0, -1 )
 
 [node name="StudyMap" parent="Actions" index="4" instance=ExtResource( 2 )]
