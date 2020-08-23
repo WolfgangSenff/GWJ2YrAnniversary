@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Battle.ogg-b2aade89294b3edf3996a2c41553a706.oggstr"
+path="res://.import/battle.ogg-2ff4e4509c046199093e2aa7fa6775e6.oggstr"
 
 [deps]
 
-source_file="res://assets/sounds/music/Battle.ogg"
-dest_files=[ "res://.import/Battle.ogg-b2aade89294b3edf3996a2c41553a706.oggstr" ]
+source_file="res://assets/sounds/music/battle.ogg"
+dest_files=[ "res://.import/battle.ogg-2ff4e4509c046199093e2aa7fa6775e6.oggstr" ]
 
 [params]
 
