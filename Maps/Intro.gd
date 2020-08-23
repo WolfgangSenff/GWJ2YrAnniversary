@@ -1,6 +1,13 @@
 extends Control
 
+onready var anim_player = $ViewportContainer/DogIntroScene/AnimationPlayer
+
 func _ready():
+    if !Party.position:
+        Party.position = $ViewportContainer/DogIntroScene/YSortTileMap/Dogtective.position
+    else:
+        $ViewportContainer/DogIntroScene/YSortTileMap/Dogtective.position = Party.position
+    anim_player.play("Intro")
     SoundManager.play_music("nostalgia theme (upbeat)", true, true, false, 1)
 
 func press_down():
@@ -26,8 +33,15 @@ func press_right():
 
 func stop_press_right():
     Input.action_release("ai_right")
-   
-func press_skip_text():
-    for i in 10:
-        yield(get_tree().create_timer(.5), "timeout")
-        Input.action_press("skip_text") ## ???
+
+func _on_SkipIntroButton_pressed():
+    $CanvasLayer/Control/VBoxContainer/SkipIntroButton.hide()
+    $CanvasLayer/Control/VBoxContainer/NewGameButton.show()
+    $CanvasLayer/Control/VBoxContainer/QuitButton.show()
+    $CanvasLayer/Control/VBoxContainer/TextureRect.show()
+
+func _on_NewGameButton_pressed():
+    get_tree().change_scene("res://Maps/OutsideLevel.tscn")
+
+func _on_QuitButton_pressed():
+    get_tree().quit()

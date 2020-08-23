@@ -42,6 +42,8 @@ func _ready() -> void:
     if PlayerControlled:
         position = Events.player_position
         direction = Party.direction
+    else:
+        direction = Vector2.DOWN
         
     self.blend_space = Vector2(direction.x, -direction.y)
 
@@ -59,9 +61,10 @@ func _physics_process(_delta):
     if direction:
         var _e = move_and_slide(direction.normalized() * speed)
         self.blend_space = Vector2(direction.x, -direction.y)
-        Party.position = position
-        Party.direction = direction
         SoundManager.play_sound(Party.walking_sound_name, false, true)
+        if PlayerControlled:
+            Party.position = position
+            Party.direction = direction
         self.is_walking = true
         self.is_idle = false
     else:

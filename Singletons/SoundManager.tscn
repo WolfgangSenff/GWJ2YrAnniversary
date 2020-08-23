@@ -35,7 +35,6 @@ stream = ExtResource( 2 )
 
 [node name="NostalgiaThemeUpbeat" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 3 )
-volume_db = -30.439
 
 [node name="NostalgiaTheme" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 5 )
