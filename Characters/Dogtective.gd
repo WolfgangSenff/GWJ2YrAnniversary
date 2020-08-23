@@ -34,11 +34,15 @@ func get_is_walking():
 export var speed := 140
 
 var direction : Vector2
+var sound_name : String
 
 func _ready() -> void:
     position = Events.player_position
     direction = Party.direction
     self.blend_space = Vector2(direction.x, -direction.y)
+
+func _exit_tree():
+    SoundManager.stop_looping_sound(Party.walking_sound_name)
 
 func _physics_process(_delta):
     direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -48,9 +52,11 @@ func _physics_process(_delta):
         self.blend_space = Vector2(direction.x, -direction.y)
         Party.position = position
         Party.direction = direction
+        SoundManager.play_sound(Party.walking_sound_name, false, true)
         self.is_walking = true
         self.is_idle = false
     else:
+        SoundManager.stop_looping_sound(Party.walking_sound_name)
         self.is_idle = true
         self.is_walking = false
 

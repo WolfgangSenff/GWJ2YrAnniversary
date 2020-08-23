@@ -81,14 +81,21 @@ func play_music(song_name : String, loop := true, interrupt := true, transition_
     current_music = audio_player
     current_music.play()
 
-func play_sound(sound_name : String, interrupt = false) -> void:
+func play_sound(sound_name : String, interrupt = false, loop = false) -> void:
     var audio_player : AudioStreamPlayer = sounds[sound_name]
-    audio_player.stream.set_loop(false)
+    audio_player.stream.set_loop(loop)
     
     if(!interrupt and audio_player.playing):
         if(!audio_player.is_connected("finished", self, "play_sound")):
             var _e = audio_player.connect("finished", self, "play_sound", [sound_name, true])
-    else:
+    elif (not loop or not audio_player.playing):
         if(audio_player.is_connected("finished", self, "play_sound")):
             audio_player.disconnect("finished", self, "play_sound")
         audio_player.play()
+
+func stop_looping_sound(sound_name : String) -> void:
+    var audio_player : AudioStreamPlayer = sounds[sound_name]
+    if audio_player:
+        if(audio_player.is_connected("finished", self, "play_sound")):
+            audio_player.disconnect("finished", self, "play_sound")
+        audio_player.stop()

@@ -3,6 +3,7 @@ extends Node2D
 onready var dog = $YSortTileMap/Dogtective
 
 export (String) var music_track
+export (bool) var walking_on_wood = true
 
 #var random_sniffer_history = [SnifferPower.SnifferLevelRecord.Fight, SnifferPower.SnifferLevelRecord.Investigation, SnifferPower.SnifferLevelRecord.Memory]
 
@@ -13,6 +14,9 @@ func _ready():
     var current_sniffables = get_tree().get_nodes_in_group("Sniffable")
     dog.connect("sniffer_updated", self, "_on_sniffer_updated")
     dog.set_all_sniffables(current_sniffables)
+
+    var walking_sound_name = "walk on wood" if walking_on_wood else "walk on grass"
+    Party.walking_sound_name = walking_sound_name
     
 func _on_sniffer_updated(sniffables):
     SnifferPower.current_sniffables = sniffables

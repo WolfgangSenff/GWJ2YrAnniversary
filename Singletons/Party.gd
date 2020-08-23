@@ -8,6 +8,7 @@ var members : Array
 var position : Vector2
 var direction : Vector2
 var cheeze := 250
+var walking_sound_name : String = "walking on grass"
 
 func _ready():
     direction = Vector2.DOWN
@@ -19,3 +20,4 @@ func give_xp(xp : int) -> void:
     for member in members:
         if member.alive:
             member.add_xp(xp)
+
