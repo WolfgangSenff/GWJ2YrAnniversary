@@ -1,13 +1,13 @@
 extends Node
 
 onready var music := {
-    "boss theme" : $Music/BossTheme,
-    "battle" : $Music/Battle,
-    "victory music" : $Music/VictoryMusic,
-    "nostalgia theme" : $Music/NostalgiaTheme,
-    "nostalgia theme (upbeat)" : $Music/NostalgiaThemeUpbeat,
-    "game over" : $Music/GameOver,
-    "generic background" : $Music/GenericBackground,
+    "boss theme" : [$Music/BossTheme, 0],
+    "battle" : [$Music/Battle, 3],
+    "victory music" : [$Music/VictoryMusic, 5.5],
+    "nostalgia theme" : [$Music/NostalgiaTheme, 0],
+    "nostalgia theme (upbeat)" : [$Music/NostalgiaThemeUpbeat, 0],
+    "game over" : [$Music/GameOver, 2.5],
+    "generic background" : [$Music/GenericBackground, 0],
 }
 
 onready var sounds := {
@@ -39,8 +39,11 @@ func stop_music() -> void:
     current_music.stop()
     current_music = null
 
-func play_music(song_name : String, play_intro := true, loop := true, interrupt := true, transition_in := 0.0) -> void:
-    var audio_player : AudioStreamPlayer = music[song_name]
+func play_music(song_name : String, loop := true, interrupt := true, transition_in := 0.0) -> void:
+    var music_data : Array = music[song_name]
+    var audio_player : AudioStreamPlayer = music_data[0]
+    var loop_offset : float = music_data[1]
+    audio_player.stream.loop_offset = loop_offset
     var _e
     
     if(current_music != null):
@@ -62,7 +65,7 @@ func play_music(song_name : String, play_intro := true, loop := true, interrupt 
             if(current_music.is_connected("finished", self, "play_music")):
                 current_music.disconnect("finished", self, "play_music")
             
-            _e = current_music.connect("finished", self, "play_music", [song_name, play_intro, loop, transition_in, true])
+            _e = current_music.connect("finished", self, "play_music", [song_name, loop, transition_in, true])
             return
         
         else:
@@ -75,14 +78,8 @@ func play_music(song_name : String, play_intro := true, loop := true, interrupt 
     
     audio_player.stream.set_loop(loop)
     
-    var start_pos : float
-    if(play_intro):
-        start_pos = 0
-    else:
-        start_pos = audio_player.stream.loop_offset
-    
     current_music = audio_player
-    current_music.play(start_pos)
+    current_music.play()
 
 func play_sound(sound_name : String, interrupt = false) -> void:
     var audio_player : AudioStreamPlayer = sounds[sound_name]

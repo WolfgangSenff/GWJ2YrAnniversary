@@ -10,6 +10,9 @@ signal active_changed(active)
 
 export (bool) var is_magician = false
 export (bool) var is_physical = false
+export (String) var atk_command
+export (String) var mag_command
+export (String) var back_command
 
 var active := false setget _set_active
 var targets : Array
@@ -99,9 +102,6 @@ func _select_target(_targets : Array) -> void:
     targets = _targets
     current_target = targets[0]
     _highlight_target(0)
-
-func get_action_names():
-    return ["Bite", "Bark", "Sniff", "Tail"]
 
 func start_physical_attack(_targets : Array) -> void:
 #    self.active = true

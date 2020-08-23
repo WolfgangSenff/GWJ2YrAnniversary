@@ -9,7 +9,7 @@ export (String) var music_track
 onready var PoopDialog = load("res://resources/Dialogs/DogPoop.tres")
 
 func _ready():
-    SoundManager.play_music(music_track, true, true, false, 1)
+    SoundManager.play_music(music_track, true, false, 1)
     var current_sniffables = get_tree().get_nodes_in_group("Sniffable")
     dog.connect("sniffer_updated", self, "_on_sniffer_updated")
     dog.set_all_sniffables(current_sniffables)

@@ -15,6 +15,9 @@ attack = 4
 defense = 3
 level = 1
 magic_skills = [ ExtResource( 2 ), ExtResource( 4 ) ]
+atk_command = "Bite"
+mag_command = "Bark"
+back_command = "Tail"
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

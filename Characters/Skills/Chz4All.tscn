@@ -5,7 +5,7 @@
 
 [node name="Chz4All" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-_name = "Cheese4All"
+_name = "Cheeze Platter"
 is_healing = true
 hit_all = true
 mp_used = 10

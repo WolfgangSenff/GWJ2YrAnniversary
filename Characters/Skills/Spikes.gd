@@ -14,6 +14,7 @@ func execute(attack : MagicAttack) -> void:
     tween.interpolate_property(attack.attacker, "position", start_position, end_position, DURATION, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
     tween.start()
     yield(tween, "tween_completed")
+    SoundManager.play_sound("magic attack")
     tween.interpolate_property(attack.attacker, "position", end_position, start_position, DURATION, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
     tween.start()
     yield(tween, "tween_completed")

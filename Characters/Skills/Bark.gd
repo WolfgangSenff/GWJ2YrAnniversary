@@ -14,6 +14,7 @@ func execute(attack : MagicAttack) -> void:
     tween.interpolate_property(attacker, "position", start_position, end_position, DURATION, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
     tween.start()
     yield(tween, "tween_completed")
+    SoundManager.play_sound("bark")
     var target : BaseCharacter = attack.targets.pop_front()
     var direction = attacker.position.direction_to(target.position)
     var bark_effect = BarkEffect.instance()

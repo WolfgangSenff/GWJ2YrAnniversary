@@ -151,8 +151,10 @@ func _select_player_action(highlight_index := 0) -> void:
     if not current_member:
         _battle_lost()
     if in_battle:
+        attack_button.text = current_member.atk_command
+        magic_button.text = current_member.mag_command
+        run_button.text = current_member.back_command
         fight_menu.set_deferred("visible", true)
-#        _reset_highlighting()
         _highlight_current_member()
         fight_menu_buttons.get_child(highlight_index).grab_focus()
 

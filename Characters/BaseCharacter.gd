@@ -44,6 +44,7 @@ func physical_attack(target : BaseCharacter) -> void:
     var starting_position = position
     _move_to_target(target.position)
     yield(tween, "tween_completed")
+    SoundManager.play_sound("physical attack")
     _deal_physical_damage_to(target)
     print(_name + ' attacked ' + target._name + ' for ' + str(attack) + ' dmg: ' + str(target.hp) + '/' + str(target.max_hp))
     _move_to_target(starting_position)

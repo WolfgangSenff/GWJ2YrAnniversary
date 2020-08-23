@@ -16,6 +16,7 @@ func execute(attack : MagicAttack) -> void:
     tween.interpolate_property(attack.attacker, "position", end_position, start_position, DURATION, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
     tween.start()
     yield(tween, "tween_completed")
+    SoundManager.play_sound("heal")
     for target in attack.targets:
         target.hp += attack.magic_skill.attack_power
         var heal_effect = HealEffect.instance()
