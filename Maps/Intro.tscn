@@ -1,0 +1,267 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Characters/Dogtective.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/OutsideTilemap.tres" type="TileSet" id=2]
+[ext_resource path="res://Objects/DialogTrigger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Poop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Rock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/Dialogs/IntroDogPoop.tres" type="Resource" id=6]
+[ext_resource path="res://Maps/Intro.gd" type="Script" id=7]
+[ext_resource path="res://assets/sprites/ui/cheese_skip_button_normal.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/ui/cheese_skip_button_pressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/ui/cheese_skip_button_hover.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Intro"
+length = 60.0
+step = 0.01
+tracks/0/type = "method"
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 3.5, 10, 11, 11.5, 19, 19.32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "press_up"
+}, {
+"args": [  ],
+"method": "stop_press_right"
+}, {
+"args": [  ],
+"method": "press_right"
+}, {
+"args": [  ],
+"method": "stop_press_right"
+}, {
+"args": [  ],
+"method": "press_right"
+}, {
+"args": [  ],
+"method": "stop_press_right"
+}, {
+"args": [  ],
+"method": "press_down"
+}, {
+"args": [  ],
+"method": "stop_press_down"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Dogtective:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 15.59 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 80, 400 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 3, 8, 15.59, 18.3, 19.32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "press_right"
+}, {
+"args": [  ],
+"method": "stop_press_up"
+}, {
+"args": [  ],
+"method": "press_down"
+}, {
+"args": [  ],
+"method": "stop_press_down"
+}, {
+"args": [  ],
+"method": "press_left"
+}, {
+"args": [  ],
+"method": "stop_press_left"
+}, {
+"args": [  ],
+"method": "press_right"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3, 7, 15.59, 16.3, 21.01, 23.01 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 276.531, 191.604 ), Vector2( 276.531, 191.604 ), Vector2( 550.254, 372.828 ), Vector2( 550.254, 372.828 ), Vector2( 401.122, 406.807 ), Vector2( 401.122, 406.807 ), Vector2( 729.59, 412.471 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("YSort/Dogtective")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 11.6, 12.35, 14.57, 15.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "press_skip_text"
+}, {
+"args": [  ],
+"method": "press_skip_text"
+}, {
+"args": [  ],
+"method": "press_skip_text"
+}, {
+"args": [  ],
+"method": "press_skip_text"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("YSort/Poop/DialogTrigger")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 12.93, 13.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "press_skip_text"
+}, {
+"args": [  ],
+"method": "press_skip_text"
+} ]
+}
+
+[node name="Intro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DogIntroScene" type="Node2D" parent="ViewportContainer"]
+
+[node name="TileMap" type="TileMap" parent="ViewportContainer/DogIntroScene"]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 0, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 0, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 0, 0, 15, 0, 0, 16, 1, 0, 17, 1, 0, 131071, 0, 0, 65536, 1, 0, 65537, 1, 0, 65538, 0, 0, 65539, 1, 0, 65540, 0, 0, 65541, 1, 0, 65542, 0, 0, 65543, 0, 0, 65544, 1, 0, 65545, 1, 0, 65546, 0, 0, 65547, 0, 0, 65548, 1, 0, 65549, 1, 0, 65550, 0, 0, 65551, 0, 0, 65552, 1, 0, 65553, 1, 0, 196607, 0, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 1, 0, 131081, 1, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 1, 0, 131089, 1, 0, 262143, 0, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 1, 0, 196618, 0, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 0, 0, 196623, 0, 0, 196624, 1, 0, 196625, 1, 0, 327679, 0, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 0, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 0, 0, 262159, 0, 0, 262160, 1, 0, 262161, 1, 0, 393215, 0, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 0, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 0, 0, 327695, 0, 0, 327696, 1, 0, 327697, 1, 0, 458751, 0, 0, 393216, 0, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 1, 0, 458769, 1, 0, 589823, 0, 0, 524288, 1, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 1, 0, 524305, 1, 0, 655359, 0, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 720895, 0, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 786431, 0, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 851967, 0, 0, 786432, 1, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 1, 0, 786443, 1, 0, 786444, 1, 0, 786445, 1, 0, 786446, 1, 0, 786447, 1, 0, 786448, 1, 0, 786449, 1, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ViewportContainer/DogIntroScene"]
+pause_mode = 2
+autoplay = "Intro"
+anims/Intro = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="ViewportContainer/DogIntroScene"]
+position = Vector2( 276.531, 191.604 )
+current = true
+smoothing_enabled = true
+drag_margin_left = 1.0
+drag_margin_top = 1.0
+drag_margin_right = 1.0
+drag_margin_bottom = 1.0
+
+[node name="YSort" type="YSort" parent="ViewportContainer/DogIntroScene"]
+
+[node name="Dogtective" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 1 )]
+pause_mode = 2
+position = Vector2( 23.6332, 247.079 )
+PlayerControlled = false
+speed = 80
+
+[node name="Rock" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 5 )]
+position = Vector2( 179.253, 96.5751 )
+
+[node name="Rock2" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 5 )]
+position = Vector2( 395.959, 164.611 )
+
+[node name="Rock3" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 5 )]
+position = Vector2( 630.305, 146.972 )
+
+[node name="Rock4" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 5 )]
+position = Vector2( 763.856, 280.524 )
+
+[node name="Rock5" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 5 )]
+position = Vector2( 63.3401, 275.484 )
+
+[node name="Rock6" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 5 )]
+position = Vector2( 149.015, 361.159 )
+
+[node name="Rock7" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 5 )]
+position = Vector2( 219.57, 492.19 )
+
+[node name="Rock8" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 5 )]
+position = Vector2( 345.562, 686.218 )
+
+[node name="Poop" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 4 )]
+position = Vector2( 641.719, 410.714 )
+SniffColor = Color( 1, 0, 0, 0 )
+
+[node name="DialogTrigger" parent="ViewportContainer/DogIntroScene/YSort/Poop" instance=ExtResource( 3 )]
+pause_mode = 2
+position = Vector2( -26.3079, 2.52271 )
+DialogRes = ExtResource( 6 )
+
+[node name="Poop2" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 4 )]
+position = Vector2( 661.9, 450.237 )
+SniffColor = Color( 1, 0, 0, 0 )
+
+[node name="Poop3" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 4 )]
+position = Vector2( 629.946, 451.077 )
+SniffColor = Color( 1, 0, 0, 0 )
+
+[node name="Poop4" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 4 )]
+position = Vector2( 647.605, 433.419 )
+SniffColor = Color( 1, 0, 0, 0 )
+
+[node name="Poop5" parent="ViewportContainer/DogIntroScene/YSort" instance=ExtResource( 4 )]
+position = Vector2( 656.855, 425.01 )
+SniffColor = Color( 1, 0, 0, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Control"]
+anchor_left = 0.399
+anchor_top = 0.821
+anchor_right = 0.602
+anchor_bottom = 0.964
+margin_left = 0.639984
+margin_top = 0.146088
+margin_right = -0.280029
+margin_bottom = 0.0820923
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
