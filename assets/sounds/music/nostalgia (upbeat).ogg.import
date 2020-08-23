@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/nostalgia (upbeat).ogg-4648b040467296d15f07c9e9f829f63e.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/nostalgia (upbeat).ogg"
+dest_files=[ "res://.import/nostalgia (upbeat).ogg-4648b040467296d15f07c9e9f829f63e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

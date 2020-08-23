@@ -5,11 +5,21 @@ onready var music := {
     "battle" : $Music/Battle,
     "victory music" : $Music/VictoryMusic,
     "nostalgia theme" : $Music/NostalgiaTheme,
-    "nostalgia theme (upbeat)" : $Music/NostalgiaThemeUpbeat
+    "nostalgia theme (upbeat)" : $Music/NostalgiaThemeUpbeat,
+    "game over" : $Music/GameOver,
+    "generic background" : $Music/GenericBackground,
 }
 
 onready var sounds := {
-    "default" : $SoundEffects/default
+    "bark" : $SoundEffects/Bark,
+    "heal" : $SoundEffects/Heal,
+    "magic attack" : $SoundEffects/MagicAttack,
+    "magic cast" : $SoundEffects/MagicCast,
+    "open door" : $SoundEffects/OpenDoor,
+    "physical attack" : $SoundEffects/PhysicalAttack,
+    "purr" : $SoundEffects/Purr,
+    "walk on grass" : $SoundEffects/WalkOnGrass,
+    "walk on wood" : $SoundEffects/WalkOnWood
 }
 
 var queued_music : AudioStreamPlayer

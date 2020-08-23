@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/nostalgia.ogg-d6b7a0e3d4e5dd6def34c32350a23e7e.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/nostalgia.ogg"
+dest_files=[ "res://.import/nostalgia.ogg-d6b7a0e3d4e5dd6def34c32350a23e7e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

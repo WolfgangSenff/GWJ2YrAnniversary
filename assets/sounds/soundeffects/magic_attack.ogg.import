@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/magic_attack.ogg-ffcaaeebf0872ea2d1a1021032c73f32.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/soundeffects/magic_attack.ogg"
+dest_files=[ "res://.import/magic_attack.ogg-ffcaaeebf0872ea2d1a1021032c73f32.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

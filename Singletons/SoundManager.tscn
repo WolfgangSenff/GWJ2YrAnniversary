@@ -1,13 +1,22 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Singletons/SoundManager.gd" type="Script" id=1]
-[ext_resource path="res://assets/sounds/music/Victory Music.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/sounds/music/Nostalgia Theme (upbeat).ogg" type="AudioStream" id=3]
-[ext_resource path="res://assets/sounds/music/Boss Battle.ogg" type="AudioStream" id=4]
-[ext_resource path="res://assets/sounds/music/Nostalgia Theme.ogg" type="AudioStream" id=5]
-[ext_resource path="res://assets/sounds/music/default.ogg" type="AudioStream" id=6]
-[ext_resource path="res://assets/sounds/soundeffects/default.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/music/victory.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/sounds/music/nostalgia (upbeat).ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/music/boss fight.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/music/nostalgia.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/music/game over.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/soundeffects/walk_on_wood.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/music/Battle.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/music/generic background.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/soundeffects/purr.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/soundeffects/walk_on_grass.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/soundeffects/bark.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/soundeffects/heal.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/sounds/soundeffects/magic_attack.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/sounds/soundeffects/open_door.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/sounds/soundeffects/physical_attack.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/sounds/soundeffects/magic_cast.ogg" type="AudioStream" id=17]
 
 [node name="Sound Manager" type="Node"]
 pause_mode = 2
@@ -30,10 +39,38 @@ stream = ExtResource( 3 )
 [node name="NostalgiaTheme" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 5 )
 
-[node name="default" type="AudioStreamPlayer" parent="Music"]
+[node name="GameOver" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 6 )
+
+[node name="GenericBackground" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 9 )
 
 [node name="SoundEffects" type="Node" parent="."]
 
-[node name="default" type="AudioStreamPlayer" parent="SoundEffects"]
+[node name="Bark" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 12 )
+
+[node name="Heal" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 13 )
+pitch_scale = 2.0
+
+[node name="MagicAttack" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 14 )
+
+[node name="MagicCast" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 17 )
+
+[node name="OpenDoor" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 15 )
+
+[node name="PhysicalAttack" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 16 )
+
+[node name="Purr" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 10 )
+
+[node name="WalkOnGrass" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 11 )
+
+[node name="WalkOnWood" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 7 )

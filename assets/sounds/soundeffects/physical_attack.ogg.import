@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/physical_attack.ogg-05fcba65e7053b90882da587505e4a21.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/soundeffects/physical_attack.ogg"
+dest_files=[ "res://.import/physical_attack.ogg-05fcba65e7053b90882da587505e4a21.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
