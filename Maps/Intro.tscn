@@ -436,6 +436,5 @@ rect_min_size = Vector2( 340, 150 )
 size_flags_horizontal = 6
 texture = ExtResource( 15 )
 expand = true
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/SkipIntroButton" to="." method="_on_SkipIntroButton_pressed"]

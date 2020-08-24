@@ -1,7 +1,8 @@
 extends BaseMonster
 
 func _ready():
-    Party.members.append(Party.Meester.instance())
+    if Party.members.size() == 2:
+        Party.members.append(Party.Meester.instance())
     hp = max_hp
 
 func select_attack(targets):

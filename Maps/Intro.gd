@@ -9,6 +9,7 @@ func _ready():
         $ViewportContainer/DogIntroScene/YSortTileMap/Dogtective.position = Party.position
     anim_player.play("Intro")
     SoundManager.play_music("nostalgia theme (upbeat)", true, true, 1)
+    $CanvasLayer/Control/VBoxContainer/NewGameButton.connect("pressed", self, "_on_NewGameButton_pressed")
 
 func press_down():
     Input.action_press("ai_down")
