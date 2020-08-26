@@ -4,7 +4,9 @@ export (int) var max_steps
 export (int) var min_steps
 export (Array, Resource) var monster_groups
 
-var steps_until_battle : int
+const STEP_SIZE = 10
+
+var steps_until_battle : float
 var active := false
 
 func _ready() -> void:
@@ -14,21 +16,22 @@ func _ready() -> void:
 
 # If the player is in this area, count down steps until 0,
 # then start the battle.
-func _process(_delta) -> void:
+func _process(delta) -> void:
     if active:
         var left = Input.is_action_pressed("ui_left")
         var right = Input.is_action_pressed("ui_right")
         var up = Input.is_action_pressed("ui_up")
         var down = Input.is_action_pressed("ui_down")
         if left or right or up or down:
-            _take_step()
+            _take_step(delta)
 
 
 # Counts down the number of steps. If it reaches 0, grab a
 # random MonsterGroup and start the battle.
-func _take_step() -> void:
-    steps_until_battle -= 1
-    if not steps_until_battle:
+func _take_step(delta : float) -> void:
+    steps_until_battle -= STEP_SIZE * delta
+    print(steps_until_battle)
+    if steps_until_battle <= 0:
         var index = randi() % monster_groups.size()
         Events.start_battle(monster_groups[index])
     
