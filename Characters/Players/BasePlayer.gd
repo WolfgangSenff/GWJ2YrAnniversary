@@ -33,6 +33,7 @@ func _level_up() -> void:
     xp -= level * XP_PER_LEVEL
     level += 1
     max_hp += 50 * (level + level % 3) / 10
+    hp = max_hp
     var mag = 4
     var atk = 4
     var def = 4
@@ -44,6 +45,7 @@ func _level_up() -> void:
         atk -= 2
         mag += 2
     max_mp += mag * level / 100 + 3
+    mp = max_mp
     attack += atk
     defense += def
 
