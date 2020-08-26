@@ -7,9 +7,9 @@
 [node name="Meester" instance=ExtResource( 2 )]
 _name = "Meester"
 max_hp = 90
-hp = 40
-max_mp = 30
-mp = 30
+hp = 90
+max_mp = 50
+mp = 50
 attack = 2
 defense = 2
 level = 1

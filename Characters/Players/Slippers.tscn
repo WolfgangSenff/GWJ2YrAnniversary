@@ -7,9 +7,9 @@
 [node name="BasePlayer" instance=ExtResource( 2 )]
 _name = "Slippers"
 max_hp = 130
-hp = 45
-max_mp = 30
-mp = 20
+hp = 130
+max_mp = 40
+mp = 40
 attack = 4
 defense = 4
 level = 1

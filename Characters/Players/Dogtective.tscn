@@ -8,9 +8,9 @@
 [node name="Dogtective" instance=ExtResource( 1 )]
 _name = "Dogtective"
 max_hp = 120
-hp = 100
-max_mp = 20
-mp = 18
+hp = 120
+max_mp = 35
+mp = 35
 attack = 4
 defense = 3
 level = 1
