@@ -30,7 +30,7 @@ func select_attack(targets):
         physical_attack.target = target
         physical_attack.attacker = self
         return physical_attack
-
+        
 func _character_died() -> void:
     ._character_died()
     visible = false

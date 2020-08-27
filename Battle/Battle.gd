@@ -122,11 +122,11 @@ func _execute_attacks() -> void:
             if attack is PhysicalAttack:
                 attack.target = _get_living_target(attack.target)
                 if attack.target and attack.target.alive:
-                    yield(attack.attacker.physical_attack(attack.target), 'completed')
+                    yield(attack.attacker.physical_attack(attack.target), "completed")
             elif attack is MagicAttack:
                 if len(attack.targets) == 1:
                     attack.targets[0] = _get_living_target(attack.targets[0])
-                yield(attack.attacker.magic_attack(attack), 'completed')
+                yield(attack.attacker.magic_attack(attack), "completed")
     attacks.clear()
     current_member = _first_living_member()
     _select_player_action()

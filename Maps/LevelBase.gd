@@ -11,9 +11,7 @@ onready var PoopDialog = load("res://resources/Dialogs/DogPoop.tres")
 
 func _ready():
     SoundManager.play_music(music_track, true, false, 1)
-    var current_sniffables = get_tree().get_nodes_in_group("Sniffable")
-    dog.connect("sniffer_updated", self, "_on_sniffer_updated")
-    dog.set_all_sniffables(current_sniffables)
+    #dog.connect("sniffer_updated", self, "_on_sniffer_updated")
 
     var walking_sound_name = "walk on wood" if walking_on_wood else "walk on grass"
     Party.walking_sound_name = walking_sound_name
